@@ -54,7 +54,7 @@ pipeline {
         }
     }
 
-    // --- Xử lý sau khi chạy xong ---
+    // --- Xử lý sau khi chạy xong --
     post {
         always {
             cleanWs() 
