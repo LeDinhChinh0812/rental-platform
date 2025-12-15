@@ -60,10 +60,10 @@ pipeline {
             cleanWs() // Dọn dẹp workspace
         }
         success {
-            echo "SUCCESS: Da deploy thanh cong tren Windows!"
+            echo "SUCCESS"
         }
         failure {
-            echo "FAILURE: Co loi xay ra."
+            echo "FAILURE!"
         }
     } // End Post
 }
