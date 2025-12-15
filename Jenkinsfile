@@ -57,7 +57,7 @@ pipeline {
     // --- Xử lý sau khi chạy xong ---
     post {
         always {
-            cleanWs() // Dọn dẹp workspace
+            cleanWs() 
         }
         success {
             echo "SUCCESS"
