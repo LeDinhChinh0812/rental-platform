@@ -8,7 +8,7 @@ pipeline {
         IMAGE_NAME = 'rental_platform'
         APP_PORT   = '3000'
     }
-
+// stage 1
     stages {
         stage('Checkout Code') {
             steps {
