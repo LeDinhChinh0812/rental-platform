@@ -5,7 +5,7 @@ pipeline {
     }
 
     environment {
-        IMAGE_NAME = 'Rental_platform'
+        IMAGE_NAME = 'rental_platform'
         APP_PORT   = '3000'
     }
 
