@@ -10,14 +10,12 @@ pipeline {
     }
 
     stages {
-        // --- Giai đoạn 1: Checkout Code ---
         stage('Checkout Code') {
             steps {
                 checkout scm
             }
         }
 
-        // --- Giai đoạn 2: Install & Test ---
         stage('Install & Test') {
             steps {
                 script {
@@ -28,7 +26,6 @@ pipeline {
             }
         }
 
-        // --- Giai đoạn 3: Build & Deploy ---
         stage('Build & Deploy Local') {
             steps {
                 script {
