@@ -32,29 +32,26 @@ pipeline {
         stage('Build & Deploy Local') {
             steps {
                 script {
-                    echo '--- 3. Building Docker Image ---'
-                    bat "docker build -t ${IMAGE_NAME}:latest ."
+                    def branchName = env.GIT_BRANCH.replace('origin/', '').replace('/', '-')
+                
+                    echo "--- Building for branch: ${branchName} ---"
+                    bat "docker build -t ${IMAGE_NAME}:${branchName} ."
 
-                    echo '--- 4. Deploying Container ---'
-                    // Stop và Remove container cũ (returnStatus: true để không lỗi nếu chưa có container)
+                    // Deploy
                     bat script: "docker stop ${IMAGE_NAME}", returnStatus: true
                     bat script: "docker rm ${IMAGE_NAME}", returnStatus: true
-
-                    // Chạy container mới (Dùng dấu ^ để xuống dòng trong CMD Windows)
-                    // Lưu ý: Không được có khoảng trắng sau dấu ^
+                
                     bat """
                         docker run -d ^
                         --name ${IMAGE_NAME} ^
-                        --restart unless-stopped ^
                         -p ${APP_PORT}:${APP_PORT} ^
-                        ${IMAGE_NAME}:latest
+                        ${IMAGE_NAME}:${branchName}
                     """
                 }
             }
         }
     }
 
-    // --- Xử lý sau khi chạy xong ---
     post {
         always {
             cleanWs() 
