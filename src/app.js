@@ -38,11 +38,7 @@ app.use(generalLimiter);
 // Home route - API info
 app.get('/', (req, res) => {
   res.json({
-<<<<<<< HEAD
     message: 'Rental Platform API',
-=======
-    message: '🏠 Rental Platform API',
->>>>>>> 146a7d43c9db4f198288655b56bf76bc452c4ecb
     version: '1.0.0',
     status: 'running',
     timestamp: new Date().toISOString(),
