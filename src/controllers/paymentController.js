@@ -2,7 +2,11 @@ const Payment = require('../models/Payment');
 const Contract = require('../models/Contract');
 const Transaction = require('../models/Transaction');
 
+<<<<<<< HEAD
 //  Tạo payment mới (CORE BUSINESS LOGIC)
+=======
+// ⭐ Tạo payment mới (CORE BUSINESS LOGIC)
+>>>>>>> 146a7d43c9db4f198288655b56bf76bc452c4ecb
 exports.createPayment = async (req, res) => {
   try {
     const { contractId, amount, paymentMethod } = req.body;
@@ -15,20 +19,32 @@ exports.createPayment = async (req, res) => {
       });
     }
 
+<<<<<<< HEAD
     //  LOGIC 1: Check contract có tồn tại không
+=======
+    // ⭐ LOGIC 1: Check contract có tồn tại không
+>>>>>>> 146a7d43c9db4f198288655b56bf76bc452c4ecb
     const contract = await Contract.getById(contractId);
     if (!contract) {
       return res.status(404).json({ error: 'Không tìm thấy hợp đồng' });
     }
 
+<<<<<<< HEAD
     //  LOGIC 2: Check contract có active không
+=======
+    // ⭐ LOGIC 2: Check contract có active không
+>>>>>>> 146a7d43c9db4f198288655b56bf76bc452c4ecb
     if (contract.Status !== 'Active') {
       return res.status(400).json({ 
         error: 'Hợp đồng chưa được kích hoạt hoặc đã kết thúc' 
       });
     }
 
+<<<<<<< HEAD
     //  LOGIC 3: Check tenant có quyền thanh toán không
+=======
+    // ⭐ LOGIC 3: Check tenant có quyền thanh toán không
+>>>>>>> 146a7d43c9db4f198288655b56bf76bc452c4ecb
     const tenantId = await Contract.getTenantIdByUserId(userId);
     if (contract.TenantID !== tenantId) {
       return res.status(403).json({ 
@@ -36,7 +52,11 @@ exports.createPayment = async (req, res) => {
       });
     }
 
+<<<<<<< HEAD
     //  LOGIC 4: Tạo Payment
+=======
+    // ⭐ LOGIC 4: Tạo Payment
+>>>>>>> 146a7d43c9db4f198288655b56bf76bc452c4ecb
     const payment = await Payment.create({
       contractId,
       amount,
@@ -44,12 +64,20 @@ exports.createPayment = async (req, res) => {
       status: 'Completed'
     });
 
+<<<<<<< HEAD
     //  LOGIC 5: Tính platform fee (10% theo .env)
+=======
+    // ⭐ LOGIC 5: Tính platform fee (10% theo .env)
+>>>>>>> 146a7d43c9db4f198288655b56bf76bc452c4ecb
     const platformFeePercentage = parseFloat(process.env.PLATFORM_FEE_PERCENT || 10) / 100;
     const platformFeeAmount = amount * platformFeePercentage;
     const landlordReceives = amount - platformFeeAmount;
 
+<<<<<<< HEAD
     //  LOGIC 6: Tạo Transaction ghi nhận phí
+=======
+    // ⭐ LOGIC 6: Tạo Transaction ghi nhận phí
+>>>>>>> 146a7d43c9db4f198288655b56bf76bc452c4ecb
     const platformFeeId = 1; // Hoặc query từ PlatformFees table
     await Transaction.create({
       contractId,
