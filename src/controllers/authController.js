@@ -103,11 +103,7 @@ exports.getProfile = async (req, res) => {
   }
 };
 
-<<<<<<< HEAD
-// ⭐ THÊM MỚI: Update Profile 
-=======
-//  THÊM MỚI: Update Profile (1.3 trong ảnh)
->>>>>>> 146a7d43c9db4f198288655b56bf76bc452c4ecb
+
 exports.updateProfile = async (req, res) => {
   try {
     const userId = req.user.userId;
